@@ -57,10 +57,10 @@ export function FloatingBackground({
         />
       )}
 
-      {/* Subtle particles (dots) — only in hero */}
+      {/* Subtle particles (dots) - only in hero */}
       {variant === "hero" && <Particles />}
 
-      {/* Bottom fade to background — only in hero */}
+      {/* Bottom fade to background - only in hero */}
       {variant === "hero" && (
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[color:var(--color-bg)]" />
       )}
@@ -68,7 +68,7 @@ export function FloatingBackground({
   );
 }
 
-// Lightweight ambient backdrop for non-hero sections — adds depth without competing with content.
+// Lightweight ambient backdrop for non-hero sections - adds depth without competing with content.
 type SectionAmbienceProps = {
   className?: string;
   side?: "left" | "right" | "center";

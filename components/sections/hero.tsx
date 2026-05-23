@@ -18,7 +18,7 @@ export function HeroSection() {
     >
       <FloatingBackground />
 
-      {/* Background marquee — tech term ribbon, drifts slowly behind content */}
+      {/* Background marquee - tech term ribbon, drifts slowly behind content */}
       <div className="absolute inset-x-0 bottom-12 sm:bottom-20 z-[1] pointer-events-none">
         <Marquee
           items={marqueeTerms}
@@ -28,7 +28,7 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Text column (right in RTL — first in source for proper a11y order) */}
+          {/* Text column (right in RTL - first in source for proper a11y order) */}
           <div className="lg:col-span-7 text-center lg:text-start">
             <motion.div
               initial={{ opacity: 0, y: -8 }}

@@ -22,7 +22,7 @@ export function WhyChooseMeSection() {
         </p>
         <div id="why-heading">
           <AnimatedHeading as="h2" className="text-white">
-            לא רק טכנולוגיה — שותפות
+            לא רק טכנולוגיה - שותפות
           </AnimatedHeading>
         </div>
       </div>

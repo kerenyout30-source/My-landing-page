@@ -27,9 +27,9 @@ const frankRuhl = Frank_Ruhl_Libre({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const SITE_TITLE = "קרן — פתרונות AI לעסקים";
+const SITE_TITLE = "קרן - פתרונות AI לעסקים";
 const SITE_DESCRIPTION =
-  "צ׳אטבוטים, סוכני AI, אוטומציות והטמעת בינה מלאכותית לעסקים — עם ליווי אישי וחשיבה עסקית.";
+  "צ׳אטבוטים, סוכני AI, אוטומציות והטמעת בינה מלאכותית לעסקים - עם ליווי אישי וחשיבה עסקית.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

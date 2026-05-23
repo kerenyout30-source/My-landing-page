@@ -79,7 +79,7 @@ export async function submitLead(
       from: fromEmail,
       to: toEmail,
       replyTo: parsed.data.email,
-      subject: `ליד חדש מהאתר — ${parsed.data.name}`,
+      subject: `ליד חדש מהאתר - ${parsed.data.name}`,
       html: buildEmailHtml(parsed.data),
     });
 

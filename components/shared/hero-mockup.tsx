@@ -31,7 +31,7 @@ const messages: Message[] = [
   },
   {
     side: "in",
-    text: "כיף! בדיוק תיאמתי לכם זמן ב-יום ג׳ ב-10:00 — מתאים?",
+    text: "כיף! בדיוק תיאמתי לכם זמן ב-יום ג׳ ב-10:00 - מתאים?",
     delay: 3.6,
   },
 ];
@@ -57,7 +57,7 @@ export function HeroMockup() {
       style={{ perspective: "1200px" }}
       className="relative w-full max-w-md mx-auto lg:mx-0"
     >
-      {/* Floating decorative chip — top-right */}
+      {/* Floating decorative chip - top-right */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, y: -10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -68,7 +68,7 @@ export function HeroMockup() {
         AI Active
       </motion.div>
 
-      {/* Floating decorative chip — bottom-left */}
+      {/* Floating decorative chip - bottom-left */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -109,7 +109,7 @@ export function HeroMockup() {
           </div>
         </div>
 
-        {/* Messages — keyed by cycle so AnimatePresence re-runs the sequence */}
+        {/* Messages - keyed by cycle so AnimatePresence re-runs the sequence */}
         <ul
           className="flex flex-col gap-3 py-5 min-h-[280px]"
           aria-live="polite"

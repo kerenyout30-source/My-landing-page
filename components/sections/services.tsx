@@ -28,7 +28,7 @@ export function ServicesSection() {
           </AnimatedHeading>
         </div>
         <p className="mt-5 mx-auto max-w-2xl text-lg text-white/65 text-balance">
-          מבחר שירותים שמותאמים לכל שלב — מהרצת פיילוט קטן עד מערכת AI שלמה
+          מבחר שירותים שמותאמים לכל שלב - מהרצת פיילוט קטן עד מערכת AI שלמה
           שמשתלבת בכל העסק.
         </p>
       </div>
