@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Heebo, Rubik } from "next/font/google";
 import { Toaster } from "sonner";
+import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -73,6 +74,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {children}
+        <WhatsAppButton />
         <Toaster
           position="top-center"
           dir="rtl"

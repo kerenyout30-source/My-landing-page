@@ -3,7 +3,8 @@ import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { AnimatedHeading } from "@/components/shared/animated-heading";
 import { GradientBorderCard } from "@/components/shared/gradient-border-card";
 import { ContactForm } from "@/components/shared/contact-form";
-import { contactContent } from "@/lib/site-config";
+import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
+import { contactContent, buildWhatsAppUrl, whatsapp } from "@/lib/site-config";
 
 export function ContactSection() {
   return (
@@ -47,6 +48,22 @@ export function ContactSection() {
               </div>
             </li>
           </ul>
+
+          <div className="mt-8 pt-8 border-t border-white/10">
+            <p className="text-sm text-white/55 mb-3">
+              מעדיפים הודעה מהירה?
+            </p>
+            <a
+              href={buildWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2.5 w-full sm:w-auto h-12 px-6 rounded-xl text-base font-semibold bg-[#25D366] text-white hover:bg-[#1ebe5d] shadow-[0_10px_30px_-8px_rgba(37,211,102,0.55)] hover:shadow-[0_12px_36px_-4px_rgba(37,211,102,0.75)] transition-all"
+              aria-label={`${whatsapp.tooltipLabel} (נפתח בחלון חדש)`}
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              שלחו לי וואטסאפ
+            </a>
+          </div>
         </div>
 
         <div className="lg:col-span-3">

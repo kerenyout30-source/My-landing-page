@@ -19,6 +19,20 @@ export const brand = {
   contactEmailFallback: "hello@example.com",
 } as const;
 
+// 👇 עדכני את המספר לקידומת בינלאומית ללא אפס מוביל וללא תווים מיוחדים.
+// דוגמה: 0501234567 → "972501234567"
+export const whatsapp = {
+  number: "972500000000",
+  defaultMessage: "היי קרן! הגעתי דרך האתר ואשמח לשמוע עוד על פתרונות ה-AI שלך.",
+  buttonLabel: "WhatsApp",
+  tooltipLabel: "צרו קשר בוואטסאפ",
+} as const;
+
+export function buildWhatsAppUrl(message?: string) {
+  const text = encodeURIComponent(message ?? whatsapp.defaultMessage);
+  return `https://wa.me/${whatsapp.number}?text=${text}`;
+}
+
 export const navLinks = [
   { href: "#about", label: "אודות" },
   { href: "#services", label: "שירותים" },
