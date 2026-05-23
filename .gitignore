@@ -41,6 +41,10 @@ yarn-error.log*
 # Project-installed agent skills (managed by `npx skills`)
 .agents/
 
+# Static export snapshots (manual archives, not source)
+/out/
+/snapshots/
+
 # vercel
 .vercel
 
