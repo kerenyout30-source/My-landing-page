@@ -38,6 +38,9 @@ yarn-error.log*
 # Claude Code local settings
 .claude/
 
+# Project-installed agent skills (managed by `npx skills`)
+.agents/
+
 # vercel
 .vercel
 
