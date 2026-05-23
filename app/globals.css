@@ -89,6 +89,15 @@ body {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+.animate-typing-bounce {
+  animation: typing-bounce 1.2s ease-in-out infinite;
+  will-change: transform;
+}
 
 .animate-float-slow { animation: float-slow 9s ease-in-out infinite; will-change: transform; }
 .animate-float-slower { animation: float-slower 13s ease-in-out infinite; will-change: transform; }

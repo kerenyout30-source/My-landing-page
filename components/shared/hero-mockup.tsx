@@ -1,29 +1,54 @@
 "use client";
 
-import { motion } from "framer-motion";
+import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Check } from "lucide-react";
 import { GradientBorderCard } from "./gradient-border-card";
 
-const messages = [
+type Message = {
+  side: "in" | "out";
+  text: string;
+  typing?: boolean;
+  delay: number;
+};
+
+const messages: Message[] = [
   {
-    side: "in" as const,
+    side: "in",
     text: "שלום! איך אפשר לעזור לעסק שלכם היום?",
     delay: 0.2,
   },
   {
-    side: "out" as const,
+    side: "out",
     text: "אני מחפש לקבוע פגישת ייעוץ לגבי AI",
-    delay: 0.7,
+    delay: 1.2,
   },
   {
-    side: "in" as const,
-    text: "כיף! בדיוק תיאמתי לכם זמן ב-יום ג׳ ב-10:00 — מתאים?",
+    side: "in",
     typing: true,
-    delay: 1.3,
+    text: "",
+    delay: 2.2,
+  },
+  {
+    side: "in",
+    text: "כיף! בדיוק תיאמתי לכם זמן ב-יום ג׳ ב-10:00 — מתאים?",
+    delay: 3.6,
   },
 ];
 
+const LOOP_DURATION_MS = 7500;
+
 export function HeroMockup() {
+  // Cycle the conversation by incrementing a key, which re-mounts AnimatePresence children.
+  const [cycle, setCycle] = React.useState(0);
+
+  React.useEffect(() => {
+    const id = window.setInterval(() => {
+      setCycle((c) => c + 1);
+    }, LOOP_DURATION_MS);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30, rotateY: -8 }}
@@ -84,38 +109,14 @@ export function HeroMockup() {
           </div>
         </div>
 
-        {/* Messages */}
-        <ul className="flex flex-col gap-3 py-5 min-h-[260px]">
-          {messages.map((m, i) => (
-            <motion.li
-              key={i}
-              initial={{ opacity: 0, y: 12, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{
-                duration: 0.5,
-                delay: m.delay,
-                ease: [0.21, 0.47, 0.32, 0.98],
-              }}
-              className={`flex ${m.side === "out" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-snug ${
-                  m.side === "in"
-                    ? "bg-white/[0.06] text-white rounded-tr-sm"
-                    : "bg-[color:var(--color-neon)]/15 border border-[color:var(--color-neon)]/30 text-white rounded-tl-sm"
-                }`}
-              >
-                {m.text}
-                {m.typing && (
-                  <span className="inline-flex gap-1 mr-1 align-middle">
-                    <Dot delay="0s" />
-                    <Dot delay="0.2s" />
-                    <Dot delay="0.4s" />
-                  </span>
-                )}
-              </div>
-            </motion.li>
-          ))}
+        {/* Messages — keyed by cycle so AnimatePresence re-runs the sequence */}
+        <ul
+          className="flex flex-col gap-3 py-5 min-h-[280px]"
+          aria-live="polite"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <MessageList key={cycle} />
+          </AnimatePresence>
         </ul>
 
         {/* Input bar */}
@@ -127,6 +128,7 @@ export function HeroMockup() {
             type="button"
             disabled
             aria-hidden
+            tabIndex={-1}
             className="h-9 w-9 rounded-full bg-[color:var(--color-neon)] text-[color:var(--color-bg)] flex items-center justify-center shadow-[0_0_16px_-2px_rgba(0,245,212,0.6)]"
           >
             <svg
@@ -148,11 +150,68 @@ export function HeroMockup() {
   );
 }
 
+// Renders the message sequence with staggered reveals. Lives in its own component so
+// AnimatePresence can re-mount it cleanly on each cycle.
+function MessageList() {
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      className="contents"
+    >
+      {messages.map((m, i) => (
+        <Bubble key={i} message={m} />
+      ))}
+    </motion.div>
+  );
+}
+
+function Bubble({ message }: { message: Message }) {
+  return (
+    <motion.li
+      initial={{ opacity: 0, y: 14, scale: 0.94 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -6, scale: 0.98, transition: { duration: 0.25 } }}
+      transition={{
+        duration: 0.45,
+        delay: message.delay,
+        ease: [0.21, 0.47, 0.32, 0.98],
+      }}
+      className={`flex ${message.side === "out" ? "justify-end" : "justify-start"}`}
+    >
+      <div
+        className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-snug ${
+          message.side === "in"
+            ? "bg-white/[0.06] text-white rounded-tr-sm"
+            : "bg-[color:var(--color-neon)]/15 border border-[color:var(--color-neon)]/30 text-white rounded-tl-sm"
+        } ${message.typing ? "min-w-[64px]" : ""}`}
+      >
+        {message.typing ? <TypingDots /> : message.text}
+      </div>
+    </motion.li>
+  );
+}
+
+function TypingDots() {
+  return (
+    <span
+      className="inline-flex items-end gap-1 py-1"
+      role="status"
+      aria-label="קרן מקלידה..."
+    >
+      <Dot delay="0s" />
+      <Dot delay="0.18s" />
+      <Dot delay="0.36s" />
+    </span>
+  );
+}
+
 function Dot({ delay }: { delay: string }) {
   return (
     <span
-      className="inline-block h-1.5 w-1.5 rounded-full bg-white/60 animate-pulse-glow"
-      style={{ animationDelay: delay, animationDuration: "1.4s" }}
+      className="inline-block h-1.5 w-1.5 rounded-full bg-white/85 animate-typing-bounce"
+      style={{ animationDelay: delay }}
       aria-hidden
     />
   );
