@@ -1,5 +1,6 @@
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { AnimatedHeading } from "@/components/shared/animated-heading";
+import { SectionAmbience } from "@/components/shared/floating-background";
 import { aboutContent } from "@/lib/site-config";
 
 export function AboutSection() {
@@ -8,7 +9,9 @@ export function AboutSection() {
       id="about"
       ariaLabelledBy="about-heading"
       containerSize="narrow"
+      className="relative isolate"
     >
+      <SectionAmbience side="center" intensity="low" />
       <div className="text-center">
         <p className="text-sm font-medium tracking-[0.2em] uppercase text-[color:var(--color-neon)] mb-4">
           {aboutContent.eyebrow}

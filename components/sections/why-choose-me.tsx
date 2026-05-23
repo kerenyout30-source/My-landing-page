@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { AnimatedHeading } from "@/components/shared/animated-heading";
 import { GradientBorderCard } from "@/components/shared/gradient-border-card";
+import { SectionAmbience } from "@/components/shared/floating-background";
 import { whyPoints } from "@/lib/site-config";
 
 export function WhyChooseMeSection() {
@@ -12,8 +13,9 @@ export function WhyChooseMeSection() {
       id="why-me"
       ariaLabelledBy="why-heading"
       containerSize="default"
-      className="relative"
+      className="relative isolate"
     >
+      <SectionAmbience side="right" intensity="low" />
       <div className="text-center mb-14">
         <p className="text-sm font-medium tracking-[0.2em] uppercase text-[color:var(--color-neon)] mb-4">
           למה לבחור בי

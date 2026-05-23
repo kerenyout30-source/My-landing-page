@@ -2,6 +2,7 @@ import { Mail, MessageCircle } from "lucide-react";
 import { SectionWrapper } from "@/components/shared/section-wrapper";
 import { AnimatedHeading } from "@/components/shared/animated-heading";
 import { GradientBorderCard } from "@/components/shared/gradient-border-card";
+import { SectionAmbience } from "@/components/shared/floating-background";
 import { ContactForm } from "@/components/shared/contact-form";
 import { WhatsAppIcon } from "@/components/shared/whatsapp-icon";
 import { contactContent, buildWhatsAppUrl, whatsapp } from "@/lib/site-config";
@@ -12,8 +13,9 @@ export function ContactSection() {
       id="contact"
       ariaLabelledBy="contact-heading"
       containerSize="default"
-      className="pb-32"
+      className="pb-32 relative isolate"
     >
+      <SectionAmbience side="left" intensity="mid" />
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
         <div className="lg:col-span-2">
           <p className="text-sm font-medium tracking-[0.2em] uppercase text-[color:var(--color-neon)] mb-4">

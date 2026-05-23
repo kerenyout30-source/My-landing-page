@@ -10,7 +10,8 @@
   --color-neon-2: #00c2ba;
 
   --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-rubik), var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 
   --radius-xl: 1.25rem;
   --radius-2xl: 1.75rem;
@@ -84,6 +85,9 @@ body {
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.35; }
   50% { opacity: 0.7; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .animate-float-slow { animation: float-slow 9s ease-in-out infinite; will-change: transform; }

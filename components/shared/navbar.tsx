@@ -11,7 +11,7 @@ export function Navbar() {
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -27,37 +27,46 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-[color:var(--color-bg)]/70 backdrop-blur-xl border-b border-white/[0.06]"
-          : "bg-transparent",
+        "fixed top-4 inset-x-4 sm:inset-x-6 z-50 transition-all duration-300",
       )}
     >
       <nav
-        className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-12"
         aria-label="Primary"
+        className={cn(
+          "mx-auto flex h-14 max-w-5xl items-center justify-between px-3 sm:px-4 rounded-full transition-all duration-300",
+          scrolled
+            ? "bg-[color:var(--color-bg)]/75 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_40px_-12px_rgba(0,245,212,0.18)]"
+            : "bg-[color:var(--color-surface)]/40 backdrop-blur-xl border border-white/[0.06]",
+        )}
       >
         <Link
           href="#top"
-          className="flex items-center gap-2 text-lg font-bold tracking-tight"
+          className="flex items-center gap-2 px-3 text-base font-bold tracking-tight"
         >
-          <span
-            className="inline-block h-2.5 w-2.5 rounded-full bg-[color:var(--color-neon)]"
-            style={{ boxShadow: "0 0 12px rgba(0,245,212,0.75)" }}
-            aria-hidden
-          />
+          <span className="relative inline-flex">
+            <span
+              className="inline-block h-2.5 w-2.5 rounded-full bg-[color:var(--color-neon)]"
+              style={{ boxShadow: "0 0 14px rgba(0,245,212,0.85)" }}
+              aria-hidden
+            />
+            <span
+              className="absolute inset-0 h-2.5 w-2.5 rounded-full bg-[color:var(--color-neon)] animate-ping opacity-60"
+              style={{ animationDuration: "2.4s" }}
+              aria-hidden
+            />
+          </span>
           <span>
             {brand.name}
             <span className="text-[color:var(--color-neon)]"> AI</span>
           </span>
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-0.5">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="px-3 py-2 text-sm text-white/75 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+                className="px-3 py-1.5 text-sm text-white/75 hover:text-white transition-colors rounded-full hover:bg-white/5"
               >
                 {link.label}
               </Link>
@@ -67,7 +76,7 @@ export function Navbar() {
 
         <Link
           href="#contact"
-          className="hidden lg:inline-flex items-center justify-center h-9 px-4 rounded-lg text-sm font-medium bg-[color:var(--color-neon)] text-[color:var(--color-bg)] hover:bg-[color:var(--color-neon-2)] shadow-[0_0_18px_-4px_rgba(0,245,212,0.6)] transition-colors"
+          className="hidden lg:inline-flex items-center justify-center h-9 px-4 rounded-full text-sm font-semibold bg-[color:var(--color-neon)] text-[color:var(--color-bg)] hover:bg-[color:var(--color-neon-2)] shadow-[0_0_18px_-4px_rgba(0,245,212,0.7)] transition-all"
         >
           בואו נדבר
         </Link>
@@ -77,7 +86,7 @@ export function Navbar() {
           aria-label={open ? "סגירת תפריט" : "פתיחת תפריט"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white"
+          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white cursor-pointer"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -86,13 +95,13 @@ export function Navbar() {
       {/* Mobile drawer */}
       <div
         className={cn(
-          "lg:hidden overflow-hidden transition-[max-height,opacity] duration-300 border-b border-white/[0.06]",
+          "lg:hidden overflow-hidden transition-[max-height,opacity] duration-300 mt-2 rounded-2xl",
           open
-            ? "max-h-96 opacity-100 bg-[color:var(--color-bg)]/95 backdrop-blur-xl"
+            ? "max-h-96 opacity-100 bg-[color:var(--color-bg)]/95 backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_40px_-12px_rgba(0,245,212,0.2)]"
             : "max-h-0 opacity-0",
         )}
       >
-        <ul className="flex flex-col px-5 py-4 gap-1">
+        <ul className="flex flex-col p-3 gap-1">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 type FloatingBackgroundProps = {
   className?: string;
-  variant?: "hero" | "subtle";
+  variant?: "hero" | "subtle" | "ambient";
 };
 
 export function FloatingBackground({
@@ -57,11 +57,50 @@ export function FloatingBackground({
         />
       )}
 
-      {/* Subtle particles (dots) */}
-      <Particles />
+      {/* Subtle particles (dots) — only in hero */}
+      {variant === "hero" && <Particles />}
 
-      {/* Bottom fade to background */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[color:var(--color-bg)]" />
+      {/* Bottom fade to background — only in hero */}
+      {variant === "hero" && (
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[color:var(--color-bg)]" />
+      )}
+    </div>
+  );
+}
+
+// Lightweight ambient backdrop for non-hero sections — adds depth without competing with content.
+type SectionAmbienceProps = {
+  className?: string;
+  side?: "left" | "right" | "center";
+  intensity?: "low" | "mid";
+};
+
+export function SectionAmbience({
+  className = "",
+  side = "right",
+  intensity = "low",
+}: SectionAmbienceProps) {
+  const opacity = intensity === "mid" ? 0.6 : 0.35;
+  const sidePosClass =
+    side === "left"
+      ? "-left-32"
+      : side === "center"
+        ? "left-1/2 -translate-x-1/2"
+        : "-right-32";
+
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+    >
+      <div
+        className={`absolute top-1/2 -translate-y-1/2 ${sidePosClass} h-[420px] w-[420px] rounded-full blur-3xl animate-float-slower`}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(0,194,186,0.22) 0%, rgba(0,245,212,0.05) 50%, transparent 75%)",
+          opacity,
+        }}
+      />
     </div>
   );
 }

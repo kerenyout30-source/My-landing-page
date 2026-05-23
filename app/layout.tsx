@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, Rubik } from "next/font/google";
+import { Heebo, Assistant } from "next/font/google";
 import { Toaster } from "sonner";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
+import { NoiseOverlay } from "@/components/shared/noise-overlay";
 import "./globals.css";
 
 const heebo = Heebo({
@@ -11,11 +12,11 @@ const heebo = Heebo({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const rubik = Rubik({
-  variable: "--font-rubik",
+const assistant = Assistant({
+  variable: "--font-display",
   subsets: ["hebrew", "latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -70,9 +71,10 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
-      className={`${heebo.variable} ${rubik.variable} h-full antialiased`}
+      className={`${heebo.variable} ${assistant.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="relative min-h-full flex flex-col">
+        <NoiseOverlay />
         {children}
         <WhatsAppButton />
         <Toaster
