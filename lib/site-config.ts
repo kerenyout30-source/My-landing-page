@@ -38,7 +38,26 @@ export const navLinks = [
   { href: "#services", label: "שירותים" },
   { href: "#why-me", label: "למה אני" },
   { href: "#process", label: "תהליך" },
+  { href: "#roi", label: "כמה תחסכו" },
   { href: "#contact", label: "צרו קשר" },
+] as const;
+
+export const marqueeTerms = [
+  "Chatbots",
+  "AI Agents",
+  "Automations",
+  "Make",
+  "n8n",
+  "Zapier",
+  "GPT",
+  "Claude",
+  "Embeddings",
+  "Workflows",
+  "APIs",
+  "Webhooks",
+  "CRM Sync",
+  "Voice AI",
+  "RAG",
 ] as const;
 
 export const heroContent = {
@@ -164,6 +183,72 @@ export const processSteps: Step[] = [
       "אחרי ההשקה — מודדים, מתקנים ומשפרים. עדכונים שוטפים, הוספת יכולות חדשות ותחזוקה שמוודאת שהמערכת תמיד מעודכנת.",
   },
 ];
+
+export const roiContent = {
+  eyebrow: "ROI שמדבר בעצמו",
+  title: "כמה זמן וכסף באמת תחסכו?",
+  subtitle:
+    "המספרים מבוססים על ממוצעים אצל לקוחות עסק קטן-בינוני אחרי 90 ימי פעילות. כל עסק שונה — בשיחת הייעוץ נצלול לנתונים האמיתיים שלכם.",
+  stats: [
+    {
+      value: "12+",
+      unit: "שעות בשבוע",
+      label: "חסכון בטיפול ידני",
+      sub: "מענה לפניות חוזרות, תיאומי פגישות, סינון לידים",
+      tone: "ember" as const,
+    },
+    {
+      value: "₪4,200",
+      unit: "בחודש",
+      label: "חיסכון על נציג מענה",
+      sub: "חלופה לעובד מענה ראשוני במשרה חלקית",
+      tone: "ember" as const,
+    },
+    {
+      value: "78%",
+      unit: "מהפניות",
+      label: "מטופלות אוטומטית",
+      sub: "תשובות מיידיות לשאלות חוזרות, ללא התערבות שלכם",
+      tone: "neon" as const,
+    },
+    {
+      value: "24/7",
+      unit: "זמינות",
+      label: "מענה תמיד פעיל",
+      sub: "גם בלילות, חגים וסופי שבוע — בלי לאחר ללידים",
+      tone: "neon" as const,
+    },
+  ],
+  comparison: {
+    title: "השוואה: השבוע הטיפוסי שלכם",
+    rows: [
+      {
+        metric: "מענה לפנייה ראשונה",
+        manual: "2–8 שעות",
+        ai: "מיידי",
+      },
+      {
+        metric: "טיפול בשאלות נפוצות",
+        manual: "10 שעות / שבוע",
+        ai: "0 שעות — אוטומטי",
+      },
+      {
+        metric: "תיאום פגישות",
+        manual: "3 שעות / שבוע",
+        ai: "0 שעות — אוטומטי",
+      },
+      {
+        metric: "ליווי לקוח עד סגירה",
+        manual: "ידני בלבד",
+        ai: "סיוע חכם בכל שלב",
+      },
+    ],
+  },
+  cta: {
+    label: "לחשב את החיסכון שלי",
+    href: "#contact",
+  },
+} as const;
 
 export const contactContent = {
   eyebrow: "בואו נדבר",

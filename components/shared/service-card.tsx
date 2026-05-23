@@ -63,7 +63,12 @@ export function ServiceCard({
           </div>
 
           {featured && (
-            <span className="rounded-full bg-[color:var(--color-neon)]/12 border border-[color:var(--color-neon)]/30 px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-[color:var(--color-neon)]">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--color-ember)]/12 border border-[color:var(--color-ember)]/30 px-3 py-1 text-[10px] font-bold tracking-widest uppercase text-[color:var(--color-ember-2)] shadow-[0_0_16px_-4px_rgba(245,184,46,0.55)]">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-ember)]"
+                style={{ boxShadow: "0 0 8px rgba(245,184,46,0.85)" }}
+                aria-hidden
+              />
               Featured
             </span>
           )}

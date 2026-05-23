@@ -63,7 +63,7 @@ export function AnimatedHeading({
               className={cn(
                 "inline-block",
                 isHighlight &&
-                  "bg-gradient-to-br from-[color:var(--color-neon)] to-[color:var(--color-neon-2)] bg-clip-text text-transparent",
+                  "bg-gradient-to-br from-[color:var(--color-ember)] via-[color:var(--color-ember-2)] to-[color:var(--color-neon)] bg-clip-text text-transparent",
               )}
             >
               {word}

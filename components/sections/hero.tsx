@@ -6,7 +6,8 @@ import { ArrowLeft, Sparkles } from "lucide-react";
 import { FloatingBackground } from "@/components/shared/floating-background";
 import { AnimatedHeading } from "@/components/shared/animated-heading";
 import { HeroMockup } from "@/components/shared/hero-mockup";
-import { heroContent } from "@/lib/site-config";
+import { Marquee } from "@/components/shared/marquee";
+import { heroContent, marqueeTerms } from "@/lib/site-config";
 
 export function HeroSection() {
   return (
@@ -16,6 +17,14 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
     >
       <FloatingBackground />
+
+      {/* Background marquee — tech term ribbon, drifts slowly behind content */}
+      <div className="absolute inset-x-0 bottom-12 sm:bottom-20 z-[1] pointer-events-none">
+        <Marquee
+          items={marqueeTerms}
+          itemClassName="text-5xl sm:text-7xl lg:text-8xl text-white/[0.04]"
+        />
+      </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -32,7 +41,11 @@ export function HeroSection() {
             </motion.div>
 
             <div id="hero-heading">
-              <AnimatedHeading as="h1" className="text-white">
+              <AnimatedHeading
+                as="h1"
+                highlight="לצמוח"
+                className="text-white font-editorial font-black tracking-tight"
+              >
                 {heroContent.headline}
               </AnimatedHeading>
             </div>

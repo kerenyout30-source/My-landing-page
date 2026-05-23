@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo, Assistant } from "next/font/google";
+import { Heebo, Assistant, Frank_Ruhl_Libre } from "next/font/google";
 import { Toaster } from "sonner";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
 import { NoiseOverlay } from "@/components/shared/noise-overlay";
@@ -17,6 +17,13 @@ const assistant = Assistant({
   subsets: ["hebrew", "latin"],
   display: "swap",
   weight: ["600", "700", "800"],
+});
+
+const frankRuhl = Frank_Ruhl_Libre({
+  variable: "--font-editorial",
+  subsets: ["hebrew", "latin"],
+  display: "swap",
+  weight: ["500", "700", "900"],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -71,7 +78,7 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
-      className={`${heebo.variable} ${assistant.variable} h-full antialiased`}
+      className={`${heebo.variable} ${assistant.variable} ${frankRuhl.variable} h-full antialiased`}
     >
       <body className="relative min-h-full flex flex-col">
         <NoiseOverlay />

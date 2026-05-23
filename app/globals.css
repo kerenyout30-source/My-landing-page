@@ -8,9 +8,12 @@
   --color-fg-muted: #94a3b8;
   --color-neon: #00f5d4;
   --color-neon-2: #00c2ba;
+  --color-ember: #f5b82e;
+  --color-ember-2: #ffd166;
 
   --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-display), var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: var(--font-editorial), var(--font-display), var(--font-heebo), serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 
   --radius-xl: 1.25rem;
@@ -97,6 +100,22 @@ body {
 .animate-typing-bounce {
   animation: typing-bounce 1.2s ease-in-out infinite;
   will-change: transform;
+}
+
+@keyframes marquee-rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee-rtl 38s linear infinite;
+  will-change: transform;
+}
+
+@utility ember-glow {
+  box-shadow:
+    0 0 0 1px rgb(245 184 46 / 0.4),
+    0 0 24px -4px rgb(245 184 46 / 0.55),
+    0 0 60px -10px rgb(245 184 46 / 0.35);
 }
 
 .animate-float-slow { animation: float-slow 9s ease-in-out infinite; will-change: transform; }

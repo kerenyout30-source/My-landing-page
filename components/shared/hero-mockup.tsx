@@ -62,7 +62,7 @@ export function HeroMockup() {
         initial={{ opacity: 0, scale: 0.8, y: -10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.4 }}
-        className="absolute -top-4 -right-4 z-20 flex items-center gap-1.5 rounded-full bg-[color:var(--color-bg)] border border-[color:var(--color-neon)]/40 px-3 py-1.5 text-xs font-semibold text-[color:var(--color-neon)] shadow-[0_0_20px_-2px_rgba(0,245,212,0.4)]"
+        className="absolute -top-4 -right-4 z-20 flex items-center gap-1.5 rounded-full bg-[color:var(--color-bg)] border border-[color:var(--color-ember)]/45 px-3 py-1.5 text-xs font-semibold text-[color:var(--color-ember-2)] shadow-[0_0_20px_-2px_rgba(245,184,46,0.4)]"
       >
         <Sparkles className="h-3 w-3" aria-hidden />
         AI Active
